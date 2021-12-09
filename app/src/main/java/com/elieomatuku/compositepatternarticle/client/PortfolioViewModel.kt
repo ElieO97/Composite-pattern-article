@@ -21,18 +21,18 @@ class PortfolioViewModel : ViewModel() {
         MediatorLiveData<PortfolioViewState>().apply { value = PortfolioViewState() }
 
     fun getUserSinglePortfolio() {
-        state.postValue(PortfolioViewState(isLoading = true))
+        state.value = PortfolioViewState(isLoading = true)
         viewModelScope.launch {
             val portfolio = getUserSinglePortfolio.execute()
-            state.postValue(PortfolioViewState(portfolioView = portfolio.toPortfolioComponentView()))
+            state.value = PortfolioViewState(portfolioView = portfolio.toPortfolioComponentView())
         }
     }
 
     fun getUserMultiplePortfolio() {
-        state.postValue(PortfolioViewState(isLoading = true))
+        state.value = PortfolioViewState(isLoading = true)
         viewModelScope.launch {
             val portfolio = getUserMultiplePortfolio.execute()
-            state.postValue(PortfolioViewState(portfolioView = portfolio.toPortfolioComponentView()))
+            state.value = PortfolioViewState(portfolioView = portfolio.toPortfolioComponentView())
         }
     }
 }
