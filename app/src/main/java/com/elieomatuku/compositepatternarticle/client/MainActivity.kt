@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
                 PortfolioViewModel::class.java
             )
 
-        viewModel.getUserSinglePortfolio()
+        viewModel.getUserPortfolio("1234")
 
         val loadingView = findViewById<ProgressBar>(R.id.loading_view)
         viewModel.state.observe(this) {
@@ -44,12 +44,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.action_single_portfolio -> {
-                viewModel.getUserSinglePortfolio()
+            R.id.action_user_1234 -> {
+                viewModel.getUserPortfolio("1234")
             }
 
-            R.id.action_multiple_portfolio -> {
-                viewModel.getUserMultiplePortfolio()
+            R.id.action_user_12345 -> {
+                viewModel.getUserPortfolio("12345")
             }
         }
         return true

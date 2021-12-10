@@ -10,11 +10,13 @@ import kotlinx.coroutines.withContext
  * Created by elieomatuku on 2021-11-15
  */
 
-class GetUserSinglePortfolio(private val portfolioRepository: PortfolioRepository) {
+class GetUserPortfolio(private val portfolioRepository: PortfolioRepository) {
 
-    suspend fun execute(): PortfolioComponent {
+    suspend fun execute(params: Input): PortfolioComponent {
         return withContext(Dispatchers.IO) {
-            this@GetUserSinglePortfolio.portfolioRepository.getUserSinglePortfolio("12345")
+            this@GetUserPortfolio.portfolioRepository.getUserPortfolio(params.userId)
         }
     }
+
+    data class Input(val userId: String)
 }

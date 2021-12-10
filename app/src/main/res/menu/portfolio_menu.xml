@@ -6,12 +6,12 @@
     tools:context=".activity.MainActivity">
 
     <item
-        android:id="@+id/action_single_portfolio"
-        android:title="Single Portfolio"
+        android:id="@+id/action_user_1234"
+        android:title="USER 1234"
         app:showAsAction="never"/>
 
     <item
-        android:id="@+id/action_multiple_portfolio"
-        android:title="Mutliple Portfolio"
+        android:id="@+id/action_user_12345"
+        android:title="USER 12345"
         app:showAsAction="never"/>
 </menu>

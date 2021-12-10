@@ -3,8 +3,7 @@ package com.elieomatuku.compositepatternarticle.client
 import androidx.lifecycle.*
 import com.elieomatuku.compositepatternarticle.component.toPortfolioComponentView
 import com.elieomatuku.data.PortfolioRepositoryImpl
-import com.elieomatuku.domain.client.usecase.GetUserMultiplePortfolio
-import com.elieomatuku.domain.client.usecase.GetUserSinglePortfolio
+import com.elieomatuku.domain.client.usecase.GetUserPortfolio
 import kotlinx.coroutines.launch
 
 
@@ -14,25 +13,17 @@ import kotlinx.coroutines.launch
 
 class PortfolioViewModel : ViewModel() {
 
-    private val getUserSinglePortfolio = GetUserSinglePortfolio(PortfolioRepositoryImpl())
-    private val getUserMultiplePortfolio = GetUserMultiplePortfolio(PortfolioRepositoryImpl())
+    private val getUserSinglePortfolio = GetUserPortfolio(PortfolioRepositoryImpl())
 
     val state =
         MediatorLiveData<PortfolioViewState>().apply { value = PortfolioViewState() }
 
-    fun getUserSinglePortfolio() {
+    fun getUserPortfolio(userId: String) {
         state.value = PortfolioViewState(isLoading = true)
         viewModelScope.launch {
-            val portfolio = getUserSinglePortfolio.execute()
+            val portfolio = getUserSinglePortfolio.execute(GetUserPortfolio.Input(userId))
             state.value = PortfolioViewState(portfolioView = portfolio.toPortfolioComponentView())
         }
     }
 
-    fun getUserMultiplePortfolio() {
-        state.value = PortfolioViewState(isLoading = true)
-        viewModelScope.launch {
-            val portfolio = getUserMultiplePortfolio.execute()
-            state.value = PortfolioViewState(portfolioView = portfolio.toPortfolioComponentView())
-        }
-    }
 }

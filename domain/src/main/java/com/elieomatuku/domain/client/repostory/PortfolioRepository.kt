@@ -9,7 +9,6 @@ import com.elieomatuku.domain.component.PortfolioComponent
 
 interface PortfolioRepository {
 
-    suspend fun getUserSinglePortfolio(userId: String): PortfolioComponent
-    suspend fun getUserMultiplePortfolio(userId: String): PortfolioComponent
+    suspend fun getUserPortfolio(userId: String): PortfolioComponent
 
 }

@@ -9,8 +9,23 @@ import kotlinx.coroutines.delay
 
 class PortfolioRepositoryImpl : PortfolioRepository {
 
-    override suspend fun getUserSinglePortfolio(userId: String): PortfolioComponent {
+    override suspend fun getUserPortfolio(userId: String): PortfolioComponent {
         delay(500)
+
+        return when (userId) {
+            "1234" -> {
+                getSinglePortfolio()
+            }
+            "12345" -> {
+                getMultiplePortfolio()
+            }
+            else -> {
+                getSinglePortfolio()
+            }
+        }
+    }
+
+    private fun getSinglePortfolio(): PortfolioComponent {
         val personalPortfolio = PortfolioLeaf(
             listOf(Owner("Jean", "Kasongo")),
             "Personal Portfolio",
@@ -30,8 +45,7 @@ class PortfolioRepositoryImpl : PortfolioRepository {
         )
     }
 
-    override suspend fun getUserMultiplePortfolio(userId: String): PortfolioComponent {
-        delay(500)
+    private fun getMultiplePortfolio(): PortfolioComponent {
         val personalPortfolio = PortfolioLeaf(
             listOf(Owner("Jean", "Kasongo")),
             "Personal Portfolio",
