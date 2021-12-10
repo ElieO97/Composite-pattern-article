@@ -14,6 +14,8 @@ import com.elieomatuku.domain.leaf.PortfolioLeaf
 
 interface PortfolioComponentView {
 
+    var portfolioComponent: PortfolioComponent
+
     fun obtainView(): Fragment
 
 }

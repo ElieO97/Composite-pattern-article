@@ -33,7 +33,7 @@ class PortfolioCompositeFragment : Fragment(), PortfolioComponentView {
         }
     }
 
-    lateinit var portfolioComponent: PortfolioComponent
+    override lateinit var portfolioComponent: PortfolioComponent
     lateinit var children: List<PortfolioComponentView>
 
     private val searchAdapter by lazy {

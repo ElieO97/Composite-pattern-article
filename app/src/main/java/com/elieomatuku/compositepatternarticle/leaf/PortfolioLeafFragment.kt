@@ -30,7 +30,7 @@ class PortfolioLeafFragment : Fragment(), PortfolioComponentView {
         }
     }
 
-    lateinit var portfolioComponent: PortfolioComponent
+    override lateinit var portfolioComponent: PortfolioComponent
 
     override fun onCreateView(
         inflater: LayoutInflater,
